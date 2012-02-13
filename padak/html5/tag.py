@@ -2,6 +2,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 """
+class EmptyValue():
+    pass
+
+
 class Element(object):
     """Base class of all of HTML tags."""
 
@@ -42,10 +46,29 @@ class Element(object):
         self.content = []
         if len(contents) > 0:
             for c in contents:
-                if hasattr(c, '__iter__'):
+                if isinstance(c, list) or isinstance(c, tuple):
                     self.content.extend(citem for citem in c)
                 else:
                     self.content.append(c)
+
+    def attr(self, name, value=EmptyValue):
+        if value is EmptyValue:
+            return self.attrs[name]
+        self.attrs[name] = value
+        return self
+
+    def get_class(self):
+        classes = self.attrs.setdefault('class', '')
+        classes = classes.split(' ')
+        return [set(c if c is not ' ' for c in classes)]
+
+    def set_class(self, classes):
+        if isinstance(classes, list) or isinstance(classes, tuple):
+            self.attrs['class'] = 
+
+    def __iter__(self):
+        for c in self.content:
+            yield c
 
     def __html__(self):
         args_html = str.join('',
@@ -55,7 +78,8 @@ class Element(object):
         else:
             if hasattr(self, 'content'):
                 content_html = []
-                if hasattr(self.content, '__iter__'):
+                if isinstance(self.content, list) \
+                   or isinstance(self.content, tuple):
                     content_html.extend(
                         c.__html__() if isinstance(c, Element) else str(c) \
                         for c in self.content
