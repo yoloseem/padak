@@ -1,8 +1,8 @@
 
-.. automodule:: padak
+.. automodule:: padak.html5
    :members:
 
    .. toctree::
       :maxdepth: 2
 
-      padak/html5
+      html5/tag
