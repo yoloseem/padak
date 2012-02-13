@@ -12,6 +12,7 @@ It is inspired by `Dirty`_.
 Author
 ======
 
-Padak is written by `Hyunjun Kim`_.
+Padak is written by `Hyunjun Kim`_ and distributed under `MIT License`_.
 
     .. _Hyunjun Kim: http://hyunjun.kr
+    .. _MIT License: http://www.opensource.org/licenses/mit-license.php
