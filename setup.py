@@ -14,5 +14,6 @@ setup(
     author='Hyunjun Kim',
     author_email='kim@hyunjun.kr',
     license='MIT License',
-    packages=['padak']
+    packages=['padak'],
+    extras_require={'docs': ['Sphinx']}
 )
