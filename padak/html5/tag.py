@@ -69,6 +69,16 @@ class Element(object):
                                               content_html)
         return html
 
+    @property
+    def html(self):
+        return self.__html__()
+
+    def __str__(self):
+        return self.html
+
+    def __unicode__(self):
+        return self.html
+
     def __repr__(self):
         args_repr = ['{0}={1!r}'.format(*a) for a in self.attrs.iteritems()]
         if hasattr(self, 'content'):
